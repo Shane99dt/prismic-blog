@@ -1,4 +1,4 @@
-const H1 = ({children}, className) => {
+const H1 = ({children, className}) => {
   return(
     <h1 className={`text-4xl font-medium ${className}`}>{children}</h1>
   )

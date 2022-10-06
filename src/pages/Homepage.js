@@ -1,22 +1,25 @@
 import { Link } from "react-router-dom"
-import { PrismicRichText, useAllPrismicDocumentsByType} from "@prismicio/react"
+import { useAllPrismicDocumentsByType} from "@prismicio/react"
 import SmallArticleCard from "../components/SmallArticleCard"
+import H1 from "../components/H1"
+import H3 from "../components/H3"
+
 const Homepage = () => {
   const [articles] = useAllPrismicDocumentsByType('article')
-  console.log(articles)
 
 
   return(
     <div>
-      Homepage
-      <div>
-        {}
-        <Link to={'/article'}>Articles</Link>
-      </div>
+      <H1 className="mb-4">Homepage</H1>
+      <H3 className="mb-4">Articles</H3>
       <section className="flex flex-col gap-3">
         {articles && (
           articles.map((article) => {
-            return <SmallArticleCard key={article.id} article={article}/>
+            return(
+              <Link to={`/${article.id}`} key={article.id}>
+                <SmallArticleCard article={article}/>
+              </Link>
+            )
           })
         )}
       </section>

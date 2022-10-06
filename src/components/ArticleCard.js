@@ -6,7 +6,7 @@ const ArticleCard = ({}) => {
   const [document] = useFirstPrismicDocument()
   const [article] = useAllPrismicDocumentsByType('article')
   console.log(article)
-  console.log(document)
+  // console.log(document)
   return(
     <div>
       <H1></H1>
