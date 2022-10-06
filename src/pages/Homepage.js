@@ -16,7 +16,7 @@ const Homepage = () => {
         {articles && (
           articles.map((article) => {
             return(
-              <Link to={`/${article.id}`} key={article.id}>
+              <Link to={`/${article.uid}`} key={article.id}>
                 <SmallArticleCard article={article}/>
               </Link>
             )

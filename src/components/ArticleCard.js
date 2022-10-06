@@ -1,20 +1,21 @@
-import H1 from "./H1"
-import { PrismicRichText, useFirstPrismicDocument, useAllPrismicDocumentsByType} from "@prismicio/react"
+import { PrismicRichText } from "@prismicio/react"
 
 
-const ArticleCard = ({}) => {
-  const [document] = useFirstPrismicDocument()
-  const [article] = useAllPrismicDocumentsByType('article')
-  console.log(article)
-  // console.log(document)
+const ArticleCard = ({document}) => {
   return(
     <div>
-      <H1></H1>
       {document && (
         <>
-          <PrismicRichText field={document.data.article_title} />
+          <div className="text-3xl font-medium mb-3 first-letter:capitalize">
+            <PrismicRichText field={document.data.article_title} />
+          </div>
           <PrismicRichText field={document.data.article_body} />
-          <PrismicRichText field={document.data.article_author} />
+          <div className="flex flex-row mt-3">
+            <span className="mr-2">Written by :</span>
+            <div className="font-medium">
+              <PrismicRichText field={document.data.article_author} />
+            </div>
+          </div>
         </>
       )}
     </div>

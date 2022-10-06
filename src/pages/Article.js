@@ -1,18 +1,23 @@
 import { usePrismicDocumentByUID } from "@prismicio/react"
 import { Link } from "react-router-dom"
 import ArticleCard from "../components/ArticleCard"
-import H1 from "../components/H1"
+import { useParams } from "react-router-dom"
 
 const Article = () => {
-  const [article, { state }] = usePrismicDocumentByUID('article', 'Yz7Q2hAAACQAb9hM')
-  console.log(article, "jhe")
+  const {id} = useParams()
+  const [article] = usePrismicDocumentByUID('article', id)
+
+
+  if(!article){
+    return <p>Loading...</p>
+  }
+
   return(
     <div>
-      <H1 className="mb-4">Article</H1>
-      <ArticleCard/>
-      <div>
+      <div className="mb-5 font-medium">
         <Link to={'/'}>Home</Link>
       </div>
+      <ArticleCard document={article}/>
     </div>
   )
 }
